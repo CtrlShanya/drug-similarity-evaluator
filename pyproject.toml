@@ -21,6 +21,10 @@ select = ["E", "W", "F", "B", "C90", "I", "Q", "SIM", "ANN", "TYP"]
 [tool.ruff]
 line-length = 88
 
+[tool.mypy]
+strict = true
+files = ["src", "tests"]
+
 [tool.poetry.scripts]
 drug-similarity = "drug_similarity_evaluator.__main__:app"
 
