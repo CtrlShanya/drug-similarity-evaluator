@@ -409,6 +409,17 @@ numpy = "*"
 Pillow = "*"
 
 [[package]]
+name = "rdkit-stubs"
+version = "0.8"
+description = "type stubs for rdkit"
+optional = false
+python-versions = ">=3.10"
+files = [
+    {file = "rdkit-stubs-0.8.tar.gz", hash = "sha256:2af5a1dcccdc85e598fda9b7f7ad3cc8bd6bc32fc55414a98d9fa69f85c12549"},
+    {file = "rdkit_stubs-0.8-py3-none-any.whl", hash = "sha256:1d58bcc604181b52713d62d5904386b1682c42b9694ddb20ceb81d3b896ccbd0"},
+]
+
+[[package]]
 name = "rich"
 version = "13.9.4"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
@@ -536,5 +547,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.9, <3.12"
-content-hash = "99bad11860c92f126f65a957b70daf2da62e1a9362de8107356a4a9c3d6939e8"
+python-versions = ">=3.10, <3.12"
+content-hash = "0131e1c3fc50b354a64cc3c7f7a8268ea04e920b50d7a98d941fea9baa2a01eb"
