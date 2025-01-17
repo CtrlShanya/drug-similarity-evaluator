@@ -1,0 +1,9 @@
+[tool.poetry]
+name = "drug_similarity_evaluator"
+version = "0.1.0"
+description = ""
+authors = ["Shanya <shanyasinghal06@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9, <3.12"
