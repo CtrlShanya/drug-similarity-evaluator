@@ -1,4 +1,5 @@
 import typing as t
+
 import typer
 
 app = typer.Typer()
@@ -13,7 +14,7 @@ class Molecule:
 
 
 class DrugLibrary:
-    molecules_list: t.List[Molecule]
+    molecules_list: list[Molecule]
 
     def find_top_similar(self, top_n: int) -> None: ...
 
