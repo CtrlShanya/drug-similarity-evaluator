@@ -90,7 +90,9 @@ def drug_similarity_evaluator(
     similarity_list = drug_library.find_top_similar(
         query_molecule=query_molecule, top_n=top_n
     )
-    print("Similar Molecules are: ", similarity_list)
+    print("Similar Molecules are: ")
+    for n, s in similarity_list:
+        print(n, f" - Similarity: {s:.2f}")
 
 
 if __name__ == "__main__":
