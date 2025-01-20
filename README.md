@@ -1,9 +1,9 @@
 # Drug Similarity Evaluator
-This project focuses on comparing molecule similarities using Tanimotot Similarity, provided by the package [rdkit]{https://www.rdkit.org/}, given the SMILES of the various molecules.
+This project focuses on comparing molecule similarities using Tanimotot Similarity, provided by the package {rdkit}[https://www.rdkit.org/], given the SMILES of the various molecules.
 It stores molecules in a DrugLibrary and can give the top "N" similar molecules to a given query.
 
 ## Set-Up
-Please ensure that the `poetry` package (https://python-poetry.org/) is installed for your given python. 
+Please ensure that the `poetry` package (https://python-poetry.org/) is installed for your given python3 version. 
 (For now, this project only works for python3.10-3.11)
 
 To install all requirements and set up a poetry environment to run code:
