@@ -1,5 +1,5 @@
 # Drug Similarity Evaluator
-This project focuses on comparing molecule similarities using Tanimotot Similarity, provided by the package {rdkit}[https://www.rdkit.org/], given the SMILES of the various molecules.
+This project focuses on comparing molecule similarities using Tanimotot Similarity, provided by the package [rdkit](https://www.rdkit.org/), given the SMILES of the various molecules.
 It stores molecules in a DrugLibrary and can give the top "N" similar molecules to a given query.
 
 ## Set-Up
