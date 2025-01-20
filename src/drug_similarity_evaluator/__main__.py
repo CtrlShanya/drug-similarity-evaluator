@@ -45,9 +45,17 @@ class DrugLibrary:
 
     @classmethod
     def add_molecule(cls, molecule: Molecule) -> None:
-        cls.molecules_list.append(molecule)
+        if not cls._get_molecule_by_name(molecule.name):
+            cls.molecules_list.append(molecule)
 
-    def get_tanimoto_similarities(
+    @classmethod
+    def _get_molecule_by_name(cls, name: str) -> t.Optional[Molecule]:
+        for mol in cls.molecules_list:
+            if mol.name == name:
+                return mol
+        return None
+
+    def _get_tanimoto_similarities(
         self, query_molecule: Molecule
     ) -> list[list[str | float]]:
         similarities: list[list[str | float]] = []
@@ -62,13 +70,27 @@ class DrugLibrary:
     def find_top_similar(
         self, query_molecule: Molecule, top_n: int
     ) -> list[list[str | float]]:
-        similarities = self.get_tanimoto_similarities(query_molecule=query_molecule)
+        similarities = self._get_tanimoto_similarities(query_molecule=query_molecule)
         similarities.sort(key=lambda x: x[1], reverse=True)
         return similarities[:top_n]
 
 
 @app.command()
-def drug_similarity_evaluator() -> None: ...
+def drug_similarity_evaluator(
+    file_path: str = typer.Option(..., envvar="FILE_PATH"),
+    query_name: str = typer.Option(..., envvar="QUERY_MOL_NAME"),
+    query_smiles: str = typer.Option(..., envvar="QUERY_MOL_SMILES"),
+    top_n: int = typer.Option(..., envvar="TOP_N"),
+) -> None:
+    drug_library = DrugLibrary()
+    drug_library.from_file(file_path=file_path)
+
+    query_molecule = Molecule(name=query_name, smiles=query_smiles)
+
+    similarity_list = drug_library.find_top_similar(
+        query_molecule=query_molecule, top_n=top_n
+    )
+    print("Similar Molecules are: ", similarity_list)
 
 
 if __name__ == "__main__":
