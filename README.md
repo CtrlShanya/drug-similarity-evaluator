@@ -14,6 +14,10 @@ To run the app, a file with various molecule names and subsequent SMILES is requ
 An example can be found in the `tests/resources` folder.
 The name and SMILES of a query molecule must also be provided.
 
+To list all the important attributes needed to run the app:
+`poetry run drug-similarity --help`
+
+Example run:
 `poetry run drug-similarity --file-path \tests\resources\example_file_1.txt --query-name Aspirin --query-smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --top-n 2`
 
 NOTE: Please make sure the query SMILES is encapsulated by double inverted commas.
