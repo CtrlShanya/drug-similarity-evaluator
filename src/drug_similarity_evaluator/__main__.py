@@ -13,7 +13,7 @@ class Molecule:
     smiles: str
     fingerprint: t.Any
 
-    def __int__(self, name: str, smiles: str) -> None:
+    def __init__(self, name: str, smiles: str) -> None:
         self.name = name
         self.smiles = smiles
         molecule = Chem.MolFromSmiles(smiles)
