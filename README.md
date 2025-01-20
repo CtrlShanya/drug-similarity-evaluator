@@ -24,9 +24,9 @@ NOTE: Please make sure the query SMILES is encapsulated by double inverted comma
 
 ## Development Mode
 To run the formatters and linters:
-`poetry run black check .`
-`poetry run mypy .`
-`poetry run ruff check`
+1. `poetry run black check .`
+2. `poetry run mypy .`
+3. `poetry run ruff check`
 
 To run the tests:
 `poetry run pytest .`
