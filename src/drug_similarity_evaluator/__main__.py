@@ -30,9 +30,41 @@ class Molecule:
 
 
 class DrugLibrary:
-    molecules_list: list[Molecule]
+    molecules_list: list[Molecule] = []
 
-    def find_top_similar(self, top_n: int) -> None: ...
+    @classmethod
+    def from_file(cls, file_path: str) -> None:
+        try:
+            with open(file_path, "r") as f:
+                for line in f:
+                    name, smiles = line.strip().split(",")
+                    mol = Molecule(name.strip(), smiles.strip())
+                    cls.add_molecule(molecule=mol)
+        except FileNotFoundError:
+            print(f"Error: File '{file_path}' not found.")
+
+    @classmethod
+    def add_molecule(cls, molecule: Molecule) -> None:
+        cls.molecules_list.append(molecule)
+
+    def get_tanimoto_similarities(
+        self, query_molecule: Molecule
+    ) -> list[list[str | float]]:
+        similarities: list[list[str | float]] = []
+
+        for mol in self.molecules_list:
+            if mol.name != query_molecule.name:
+                tanimoto = query_molecule.calculate_similarity(mol)
+                similarities.append([mol.name, tanimoto])
+
+        return similarities
+
+    def find_top_similar(
+        self, query_molecule: Molecule, top_n: int
+    ) -> list[list[str | float]]:
+        similarities = self.get_tanimoto_similarities(query_molecule=query_molecule)
+        similarities.sort(key=lambda x: x[1], reverse=True)
+        return similarities[:top_n]
 
 
 @app.command()
